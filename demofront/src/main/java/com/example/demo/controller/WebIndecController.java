@@ -28,7 +28,7 @@ public class WebIndecController {
 		return "login";
 	}
 	
-	@GetMapping("/test") // 로그인
+	@GetMapping(value={"/","/test"}) // 로그인
 	public String test() throws IOException {
 		return "test";
 	}
