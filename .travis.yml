@@ -13,6 +13,7 @@ cache :
       - '$HOME/.gradle'
 script : 
    - pwd
+   - sudo chmod -R 777 demofront
    - cd demofront
    - ./gradlew clean build
 
