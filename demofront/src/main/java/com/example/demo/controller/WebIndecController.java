@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/index")
 public class WebIndecController {
+	@GetMapping("/google") 
+	public String google() throws IOException {
+		return "/googl.html";
+	}
+	@GetMapping("/redirect") 
+	public String redirect() throws IOException {
+		return "/redirect.html";
+	}
+
+	@GetMapping("/userinfo") 
+	public String userinfo() throws IOException {
+		return "/userinfo.html";
+	}
 
 	@GetMapping("/signup") // 회원가입
 	public String index() throws IOException {

@@ -41,7 +41,8 @@
 				data: json,
 				success: function(response) {
 					console.log(response);
-					localStorage.setItem('token', response['token']);
+					localStorage.setItem('accessToken', response['accessToken']);
+					localStorage.setItem('refreshToken', response['refreshToken']);
 					succ(response);
 					//location.href='/index/test';
 				},
@@ -52,14 +53,14 @@
 
 			});
 		}).then((arg) => {
-			var token = localStorage.getItem('token');
+			var accesstoken = localStorage.getItem('accessToken');
 
 				$.ajax({
 					url: server+'/api/user',
 					type: 'GET',
 					beforeSend: function(xhr) {
 						xhr.setRequestHeader("Content-type", "application/json");
-						xhr.setRequestHeader("Authorization", "Bearer " + token);
+						xhr.setRequestHeader("Authorization", "Bearer " + accesstoken);
 					},
 					success: function(response) {
 						console.log(response);

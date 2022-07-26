@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="220509343607-lq8hphjn0p71qpv4ceac9sl93mpie79s.apps.googleusercontent.com">
+	
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>
+	<script src="https://accounts.google.com/gsi/client" async defer></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <div id="g_id_onload"
+         data-client_id="220509343607-lq8hphjn0p71qpv4ceac9sl93mpie79s.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+
+	<input type="button" id="loginBtn" value="login">
+	<script>    $("#loginBtn").click(function(){      
+		location.href="https://accounts.google.com/o/oauth2/auth?client_id="+
+		                "220509343607-lq8hphjn0p71qpv4ceac9sl93mpie79s.apps.googleusercontent.com"+
+						                "&redirect_uri="+
+										"http://localhost:8082/index/redirect" +
+										"&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email profile&approval_prompt=force&access_type=offline";    });  </script>
+	
+	<script>
+
+		function handleCredentialResponse(response) {
+          console.log("Encoded JWT ID token: " + response.credential);
+        }
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "220509343607-lq8hphjn0p71qpv4ceac9sl93mpie79s.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+          );
+          google.accounts.id.prompt(); // also display the One Tap dialog
+        }
+
+	  </script>
+  </body>
+</html>
